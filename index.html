@@ -1,763 +1,1154 @@
 <!DOCTYPE html>
 <html lang="en-GB">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Plate | Launching 19 March 2026</title>
-    <meta
-      name="description"
-      content="The Plate launches 19 March 2026 for independent restaurants."
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Manrope:wght@200;300;400&family=Cormorant+Garamond:ital,wght@1,400&family=DM+Sans:opsz,wght@9..40,300;400&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --bg: #42210b;
-        --bg-deep: #1c0f07;
-        --panel: #5c3320;
-        --coral: #e05a45;
-        --sage: #c8d9bc;
-        --cream: #f5ede6;
-        --gold: #c9a635;
-        --olive: #5b7840;
-        --text: #f5ede6;
-        --line: rgba(245, 237, 230, 0.12);
-        --line-strong: rgba(245, 237, 230, 0.22);
-        --shadow: 0 24px 80px rgba(0, 0, 0, 0.22);
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        margin: 0;
-        min-width: 320px;
-        font-family: "DM Sans", sans-serif;
-        font-weight: 300;
-        color: var(--text);
-        background:
-          radial-gradient(circle at top, rgba(224, 90, 69, 0.08), transparent 26%),
-          radial-gradient(circle at 20% 20%, rgba(201, 166, 53, 0.08), transparent 18%),
-          linear-gradient(180deg, #4d2812 0%, var(--bg) 35%, var(--bg-deep) 100%);
-        line-height: 1.5;
-      }
-
-      img,
-      svg {
-        display: block;
-        max-width: 100%;
-      }
-
-      a {
-        color: inherit;
-      }
-
-      .page-shell {
-        position: relative;
-        overflow: clip;
-      }
-
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-      }
-
-      .page-shell::before,
-      .page-shell::after {
-        content: "";
-        position: fixed;
-        inset: auto;
-        pointer-events: none;
-        z-index: 0;
-        border-radius: 50%;
-        filter: blur(70px);
-        opacity: 0.25;
-      }
-
-      .page-shell::before {
-        top: 8rem;
-        left: -6rem;
-        width: 16rem;
-        height: 16rem;
-        background: rgba(200, 217, 188, 0.08);
-      }
-
-      .page-shell::after {
-        right: -8rem;
-        bottom: 14rem;
-        width: 20rem;
-        height: 20rem;
-        background: rgba(224, 90, 69, 0.08);
-      }
-
-      main,
-      footer {
-        position: relative;
-        z-index: 1;
-      }
-
-      section,
-      footer {
-        padding: clamp(5rem, 12vw, 10rem) clamp(1.5rem, 5vw, 4rem);
-      }
-
-      .wrap {
-        width: min(100%, 1120px);
-        margin: 0 auto;
-      }
-
-      .hero {
-        min-height: 100vh;
-        display: grid;
-        align-items: center;
-      }
-
-      .hero .wrap {
-        max-width: 840px;
-        text-align: center;
-      }
-
-      .logo-stack {
-        display: grid;
-        justify-items: center;
-        gap: 1rem;
-      }
-
-      .logo-mark {
-        width: 4rem;
-        height: 4rem;
-        color: var(--cream);
-      }
-
-      .wordmark {
-        font-family: "Manrope", sans-serif;
-        font-weight: 200;
-        font-size: 1.125rem;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-      }
-
-      .hero-tagline,
-      .join-title {
-        margin: 0;
-        font-family: "Cormorant Garamond", serif;
-        font-style: italic;
-        font-weight: 400;
-        line-height: 1;
-      }
-
-      .hero-tagline {
-        margin-top: 1.75rem;
-        font-size: clamp(2rem, 5vw, 4rem);
-        color: var(--sage);
-      }
-
-      .divider {
-        width: min(9rem, 30vw);
-        height: 1px;
-        margin: 2rem auto 1.75rem;
-        background: linear-gradient(
-          90deg,
-          transparent 0%,
-          rgba(201, 166, 53, 0.6) 30%,
-          rgba(245, 237, 230, 0.8) 50%,
-          rgba(201, 166, 53, 0.6) 70%,
-          transparent 100%
-        );
-      }
-
-      .hero-lines {
-        margin: 0;
-        display: grid;
-        gap: 0.5rem;
-        font-size: clamp(1rem, 2vw, 1.125rem);
-        color: rgba(245, 237, 230, 0.8);
-      }
-
-      .panel {
-        background:
-          linear-gradient(180deg, rgba(245, 237, 230, 0.03), rgba(245, 237, 230, 0)),
-          var(--panel);
-        box-shadow: var(--shadow);
-      }
-
-      .section-kicker {
-        margin: 0 0 1rem;
-        font-family: "Manrope", sans-serif;
-        font-weight: 200;
-        font-size: 0.8rem;
-        letter-spacing: 0.24em;
-        text-transform: uppercase;
-        color: rgba(245, 237, 230, 0.56);
-      }
-
-      .display {
-        margin: 0;
-        font-family: "Bricolage Grotesque", sans-serif;
-        font-weight: 800;
-        letter-spacing: -0.02em;
-        line-height: 0.94;
-      }
-
-      .crisis-grid,
-      .answer-grid,
-      .join-grid,
-      .share-grid,
-      .footer-grid {
-        display: grid;
-        gap: 2rem;
-      }
-
-      .crisis-grid,
-      .answer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .crisis-title {
-        font-size: clamp(5rem, 12vw, 9rem);
-        color: var(--coral);
-      }
-
-      .lede,
-      .body-copy,
-      .crisis-note,
-      .join-subtitle,
-      .share-label {
-        margin: 0;
-        font-size: clamp(1rem, 2vw, 1.25rem);
-      }
-
-      .stats {
-        display: grid;
-        gap: 1rem;
-        margin: 2.5rem 0 2rem;
-      }
-
-      .stat-card {
-        padding: 1.25rem;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 2px;
-        background: rgba(28, 15, 7, 0.12);
-      }
-
-      .stat-value {
-        margin: 0 0 0.25rem;
-        font-family: "Bricolage Grotesque", sans-serif;
-        font-weight: 800;
-        font-size: clamp(2rem, 5vw, 3rem);
-        letter-spacing: -0.02em;
-        color: var(--coral);
-      }
-
-      .stat-label {
-        margin: 0;
-        color: rgba(245, 237, 230, 0.7);
-      }
-
-      .answer {
-        background:
-          linear-gradient(180deg, rgba(200, 217, 188, 0.04), transparent 35%),
-          var(--bg-deep);
-      }
-
-      .answer-title {
-        font-size: clamp(2.9rem, 7vw, 6rem);
-        color: var(--coral);
-        max-width: 12ch;
-      }
-
-      .body-copy {
-        color: rgba(245, 237, 230, 0.86);
-      }
-
-      .body-copy + .body-copy {
-        margin-top: 1.25rem;
-      }
-
-      .join {
-        text-align: center;
-      }
-
-      .join-grid {
-        max-width: 900px;
-        margin: 0 auto;
-      }
-
-      .join-title {
-        font-size: clamp(2.5rem, 6vw, 5rem);
-        color: var(--sage);
-      }
-
-      .countdown {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.75rem;
-        margin: 1rem 0 0;
-      }
-
-      .countdown-block {
-        padding: 1rem 0.75rem;
-        border-top: 1px solid var(--line-strong);
-        border-bottom: 1px solid var(--line);
-      }
-
-      .countdown-value {
-        display: block;
-        font-family: "Bricolage Grotesque", sans-serif;
-        font-weight: 800;
-        font-size: clamp(2.25rem, 7vw, 4rem);
-        line-height: 0.95;
-        letter-spacing: -0.02em;
-        color: var(--coral);
-      }
-
-      .countdown-label {
-        display: block;
-        margin-top: 0.35rem;
-        font-family: "Manrope", sans-serif;
-        font-weight: 200;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        font-size: 0.75rem;
-        color: rgba(245, 237, 230, 0.6);
-      }
-
-      .join-form {
-        width: min(100%, 720px);
-        margin: 0 auto;
-        display: grid;
-        gap: 0.75rem;
-      }
-
-      .join-form input,
-      .join-form button {
-        min-height: 3.5rem;
-        border-radius: 0;
-        font-size: 1rem;
-      }
-
-      .join-form input {
-        width: 100%;
-        padding: 0 1rem;
-        border: 1px solid rgba(245, 237, 230, 0.8);
-        background: rgba(28, 15, 7, 0.28);
-        color: var(--cream);
-        font-family: "DM Sans", sans-serif;
-        font-weight: 300;
-      }
-
-      .join-form input::placeholder {
-        color: rgba(245, 237, 230, 0.54);
-      }
-
-      .join-form button {
-        border: 0;
-        padding: 0 1.4rem;
-        background: var(--coral);
-        color: #fff;
-        font-family: "Manrope", sans-serif;
-        font-weight: 400;
-        cursor: pointer;
-        transition: transform 220ms ease, filter 220ms ease;
-      }
-
-      .join-form button:hover,
-      .join-form button:focus-visible {
-        transform: translateY(-1px);
-        filter: brightness(1.04);
-      }
-
-      .share {
-        background:
-          linear-gradient(180deg, rgba(245, 237, 230, 0.02), transparent),
-          #50301d;
-        text-align: center;
-      }
-
-      .share-grid {
-        justify-items: center;
-      }
-
-      .share-title {
-        margin: 0;
-        font-family: "Manrope", sans-serif;
-        font-weight: 200;
-        font-size: clamp(0.9rem, 2vw, 1rem);
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-      }
-
-      .qr-frame {
-        padding: 1rem;
-        border: 1px solid rgba(245, 237, 230, 0.16);
-        background: rgba(245, 237, 230, 0.04);
-        box-shadow: var(--shadow);
-      }
-
-      #qrcode {
-        width: 176px;
-        height: 176px;
-      }
-
-      #qrcode img,
-      #qrcode canvas {
-        width: 176px;
-        height: 176px;
-      }
-
-      .share-label {
-        color: rgba(245, 237, 230, 0.86);
-      }
-
-      footer {
-        border-top: 1px solid rgba(245, 237, 230, 0.08);
-        background: rgba(28, 15, 7, 0.72);
-      }
-
-      .footer-grid {
-        align-items: center;
-        justify-items: center;
-        text-align: center;
-      }
-
-      .footer-brand {
-        display: grid;
-        justify-items: center;
-        gap: 0.75rem;
-      }
-
-      .footer-meta {
-        margin: 0;
-        color: rgba(245, 237, 230, 0.66);
-      }
-
-      .reveal {
-        opacity: 0;
-        transform: translateY(24px);
-        transition: opacity 600ms ease, transform 600ms ease;
-      }
-
-      .reveal.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      @media (min-width: 700px) {
-        .stats {
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-
-        .join-form {
-          grid-template-columns: minmax(0, 1fr) auto;
-        }
-
-        .countdown {
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-        }
-      }
-
-      @media (min-width: 860px) {
-        .crisis-grid,
-        .answer-grid {
-          grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-          align-items: start;
-        }
-
-        .footer-grid {
-          grid-template-columns: auto 1fr auto auto;
-          justify-items: start;
-          text-align: left;
-        }
-
-        .footer-brand {
-          justify-items: start;
-        }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto;
-        }
-
-        *,
-        *::before,
-        *::after {
-          animation: none !important;
-          transition: none !important;
-        }
-
-        .reveal {
-          opacity: 1;
-          transform: none;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="page-shell">
-      <main>
-        <section class="hero">
-          <div class="wrap">
-            <div class="logo-stack reveal">
-              <svg
-                class="logo-mark"
-                viewBox="0 0 100 100"
-                aria-hidden="true"
-                fill="none"
-              >
-                <path
-                  d="M72 20A38 38 0 1 0 72 80"
-                  stroke="currentColor"
-                  stroke-width="5.4"
-                  stroke-linecap="round"
-                />
-                <circle cx="55" cy="50" r="12" fill="currentColor" />
-                <path
-                  d="M34 80Q28 88 22 86"
-                  stroke="currentColor"
-                  stroke-width="5.4"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M72 20V84"
-                  stroke="currentColor"
-                  stroke-width="5.4"
-                  stroke-linecap="round"
-                />
-              </svg>
-              <div class="wordmark">the plate</div>
-            </div>
-            <p class="hero-tagline reveal">The head office you never had.</p>
-            <div class="divider reveal" aria-hidden="true"></div>
-            <div class="hero-lines reveal">
-              <div>Independent restaurants.</div>
-              <div>The intelligence they deserve.</div>
-              <div>The head office they never had.</div>
-            </div>
-          </div>
-        </section>
-
-        <section class="panel">
-          <div class="wrap crisis-grid">
-            <div class="reveal">
-              <p class="section-kicker">The crisis</p>
-              <h2 class="display crisis-title">SIX A DAY.</h2>
-            </div>
-            <div class="reveal">
-              <p class="lede">
-                Six independent restaurants close every day in the UK.
-              </p>
-              <div class="stats">
-                <article class="stat-card">
-                  <p class="stat-value">2,000+</p>
-                  <p class="stat-label">projected closures in 2026</p>
-                </article>
-                <article class="stat-card">
-                  <p class="stat-value">200–300%</p>
-                  <p class="stat-label">energy cost increase since 2019</p>
-                </article>
-                <article class="stat-card">
-                  <p class="stat-value">15%+</p>
-                  <p class="stat-label">National Living Wage increase this year</p>
-                </article>
-              </div>
-              <p class="crisis-note">
-                The system is failing operators. Not because they don't care.
-                Because no one built the tools they needed.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section class="answer">
-          <div class="wrap answer-grid">
-            <div class="reveal">
-              <p class="section-kicker">The answer</p>
-              <h2 class="display answer-title">
-                The platform. The partner. The plate.
-              </h2>
-            </div>
-            <div class="reveal">
-              <p class="body-copy">
-                From 19 March, founding members get free access to a WhatsApp
-                business coach — available 24/7, trained on every compliance
-                update, every energy trick, every margin insight we've gathered.
-                And it's only the beginning.
-              </p>
-              <p class="body-copy">
-                Robert Walton MBE built his first restaurant with nothing but
-                instinct and hard work. The Plate is what he wishes had existed
-                then.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section class="join">
-          <div class="join-grid">
-            <div class="reveal">
-              <p class="section-kicker">Join</p>
-              <h2 class="join-title">Founding members only.</h2>
-            </div>
-            <p class="join-subtitle reveal">
-              Free to join. The platform launches 19 March 2026. After that, the
-              founding rate closes.
-            </p>
-            <div class="countdown reveal" aria-label="Countdown to launch">
-              <div class="countdown-block">
-                <span class="countdown-value" data-unit="days">00</span>
-                <span class="countdown-label">Days</span>
-              </div>
-              <div class="countdown-block">
-                <span class="countdown-value" data-unit="hours">00</span>
-                <span class="countdown-label">Hours</span>
-              </div>
-              <div class="countdown-block">
-                <span class="countdown-value" data-unit="minutes">00</span>
-                <span class="countdown-label">Minutes</span>
-              </div>
-              <div class="countdown-block">
-                <span class="countdown-value" data-unit="seconds">00</span>
-                <span class="countdown-label">Seconds</span>
-              </div>
-            </div>
-            <form
-              class="join-form reveal"
-              action="https://formspree.io/f/placeholder"
-              method="post"
-            >
-              <label class="sr-only" for="email">Email address</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="Your email address"
-                required
-                autocomplete="email"
-              />
-              <button type="submit">Join the founding members</button>
-            </form>
-          </div>
-        </section>
-
-        <section class="share panel">
-          <div class="wrap share-grid">
-            <h2 class="share-title reveal">
-              SHARE WITH SOMEONE WHO SHOULD BE IN THE ROOM
-            </h2>
-            <div class="qr-frame reveal">
-              <div id="qrcode" aria-label="QR code for theplate.co.uk"></div>
-            </div>
-            <p class="share-label reveal">theplate.co.uk</p>
-          </div>
-        </section>
-      </main>
-
-      <footer>
-        <div class="wrap footer-grid">
-          <div class="footer-brand">
-            <svg
-              class="logo-mark"
-              viewBox="0 0 100 100"
-              aria-hidden="true"
-              fill="none"
-              style="width: 24px; height: 24px"
-            >
-              <path
-                d="M72 20A38 38 0 1 0 72 80"
-                stroke="currentColor"
-                stroke-width="5.4"
-                stroke-linecap="round"
-              />
-              <circle cx="55" cy="50" r="12" fill="currentColor" />
-              <path
-                d="M34 80Q28 88 22 86"
-                stroke="currentColor"
-                stroke-width="5.4"
-                stroke-linecap="round"
-              />
-              <path
-                d="M72 20V84"
-                stroke="currentColor"
-                stroke-width="5.4"
-                stroke-linecap="round"
-              />
-            </svg>
-            <div class="wordmark">the plate</div>
-          </div>
-          <p class="footer-meta">© 2026 The Plate</p>
-          <p class="footer-meta">Founded by Robert Walton MBE</p>
-        </div>
-      </footer>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Plate | Launching 19 March 2026</title>
+  <meta name="description" content="The head office you never had. The Plate gives independent restaurants the intelligence, support and guidance that only large groups have ever had. Founded by Robert Walton MBE." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200;400;800&family=Cormorant+Garamond:ital,wght@1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;400;500&family=Manrope:wght@200;300&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────────── */
+    :root {
+      --bg:       #42210B;
+      --bg-deep:  #1C0F07;
+      --panel:    #5C3320;
+      --coral:    #E05A45;
+      --coral-lt: #EC8070;
+      --sage:     #C8D9BC;
+      --cream:    #F5EDE6;
+      --gold:     #C9A635;
+      --text:     #F5EDE6;
+      --muted:    rgba(245,237,230,0.55);
+      --rule:     rgba(245,237,230,0.12);
+      --rule-strong: rgba(245,237,230,0.22);
+
+      --f-display: 'Bricolage Grotesque', sans-serif;
+      --f-body:    'DM Sans', sans-serif;
+      --f-quote:   'Cormorant Garamond', serif;
+      --f-mark:    'Manrope', sans-serif;
+
+      --max: 1100px;
+      --gutter: clamp(1.25rem, 5vw, 3rem);
+    }
+
+    /* ─── RESET ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea {
+      font: inherit;
+      border: none;
+      outline: none;
+      background: none;
+    }
+
+    /* ─── GRAIN TEXTURE ──────────────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      background-size: 300px 300px;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 1;
+    }
+
+    body {
+      font-family: var(--f-body);
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--bg-deep);
+    }
+
+    /* ─── UTILITY ────────────────────────────────────────────── */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+    .wrap {
+      max-width: var(--max);
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+    }
+
+    /* ─── LOGO SVG ───────────────────────────────────────────── */
+    .logo-svg { width: 38px; height: 38px; }
+    .logo-svg--sm { width: 28px; height: 28px; }
+
+    /* ─── NAV ────────────────────────────────────────────────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(28, 15, 7, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .nav__brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav__wordmark {
+      font-family: var(--f-mark);
+      font-weight: 200;
+      font-size: 1.05rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--cream);
+    }
+    .nav__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 20px;
+      background: var(--coral);
+      color: var(--bg-deep);
+      font-family: var(--f-body);
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .nav__cta:hover { background: var(--coral-lt); }
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(160deg, #4d2812 0%, var(--bg) 50%, var(--bg-deep) 100%);
+      position: relative;
+      overflow: hidden;
+      padding-block: 8rem 5rem;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 85% 20%, rgba(224,90,69,0.07), transparent),
+        radial-gradient(ellipse 50% 60% at 15% 80%, rgba(201,166,53,0.05), transparent);
+      pointer-events: none;
+    }
+    .hero__inner {
+      position: relative;
+      z-index: 1;
+    }
+    .hero__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 2.5rem;
+    }
+    .hero__eyebrow-line {
+      width: 36px;
+      height: 1px;
+      background: var(--coral);
+    }
+    .hero__eyebrow-text {
+      font-family: var(--f-body);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--coral);
+    }
+    .hero__headline {
+      font-family: var(--f-display);
+      font-weight: 800;
+      font-size: clamp(3rem, 8vw, 7rem);
+      line-height: 0.95;
+      letter-spacing: -0.025em;
+      color: var(--cream);
+      max-width: 15ch;
+      margin-bottom: 2rem;
+    }
+    .hero__headline em {
+      font-style: normal;
+      color: var(--coral);
+    }
+    .hero__sub {
+      font-family: var(--f-body);
+      font-weight: 300;
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      color: var(--muted);
+      max-width: 46ch;
+      margin-bottom: 3rem;
+      line-height: 1.7;
+    }
+    .hero__cta-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      padding: 16px 32px;
+      background: var(--coral);
+      color: var(--bg-deep);
+      font-family: var(--f-body);
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover {
+      background: var(--coral-lt);
+      transform: translateY(-1px);
+    }
+    .hero__note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .hero__countdown {
+      margin-top: 4rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--rule);
+    }
+    .hero__countdown-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .countdown-units {
+      display: flex;
+      gap: clamp(1.5rem, 4vw, 3rem);
+    }
+    .countdown-unit { display: flex; flex-direction: column; align-items: flex-start; }
+    .countdown-num {
+      font-family: var(--f-display);
+      font-weight: 800;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      line-height: 1;
+      color: var(--cream);
+      letter-spacing: -0.03em;
+      min-width: 2.5ch;
+    }
+    .countdown-lbl {
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* ─── SECTION SHARED ─────────────────────────────────────── */
+    section { padding-block: clamp(4rem, 10vw, 8rem); }
+
+    .section-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1.8rem;
+    }
+    .section-eyebrow__line {
+      width: 24px; height: 1px; background: var(--coral);
+    }
+    .section-eyebrow__text {
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--coral);
+    }
+
+    .section-header {
+      font-family: var(--f-display);
+      font-weight: 800;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+    }
+
+    .body-text {
+      font-weight: 300;
+      font-size: clamp(1rem, 1.8vw, 1.1rem);
+      line-height: 1.8;
+      color: rgba(245,237,230,0.82);
+      max-width: 68ch;
+    }
+    .body-text + .body-text { margin-top: 1.2em; }
+
+    /* ─── PROBLEM SECTION ────────────────────────────────────── */
+    .section-problem {
+      background: var(--bg);
+      position: relative;
+    }
+    .problem__layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+    @media (min-width: 860px) {
+      .problem__layout {
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: start;
+      }
+    }
+    .stats-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .stat-item {
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--rule-strong);
+    }
+    .stat-item:first-child { padding-top: 0; }
+    .stat-num {
+      font-family: var(--f-display);
+      font-weight: 800;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      color: var(--coral);
+      margin-bottom: 0.6rem;
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      line-height: 1.5;
+      text-transform: uppercase;
+      max-width: 30ch;
+    }
+
+    /* ─── SOLUTION SECTION ───────────────────────────────────── */
+    .section-solution {
+      background: var(--bg-deep);
+    }
+    .solution__header {
+      max-width: 22ch;
+      margin-bottom: 3rem;
+    }
+    .solution__body {
+      max-width: 60ch;
+      margin-bottom: 5rem;
+    }
+
+    /* ─── PHASE TIMELINE ─────────────────────────────────────── */
+    .phases {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+    .phases::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 2.1rem;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--coral) 0%, rgba(224,90,69,0.2) 70%, transparent 100%);
+    }
+    @media (min-width: 680px) {
+      .phases::before { left: 2.6rem; }
+    }
+    .phase {
+      display: grid;
+      grid-template-columns: 5.5rem 1fr;
+      gap: 0 2rem;
+      padding-bottom: 3.5rem;
+      position: relative;
+    }
+    .phase:last-child { padding-bottom: 0; }
+    .phase__num-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 0.2rem;
+    }
+    .phase__dot {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--coral);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 0 4px rgba(224,90,69,0.15);
+    }
+    .phase__num {
+      font-family: var(--f-display);
+      font-weight: 800;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--coral);
+      margin-top: 6px;
+    }
+    .phase__content {}
+    .phase__timing {
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 0.5rem;
+    }
+    .phase__title {
+      font-family: var(--f-display);
+      font-weight: 800;
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+    .phase__body {
+      font-weight: 300;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: rgba(245,237,230,0.7);
+      max-width: 58ch;
+    }
+
+    /* ─── ROBERT SECTION ─────────────────────────────────────── */
+    .section-robert {
+      background: var(--bg);
+    }
+    .robert__layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+    @media (min-width: 860px) {
+      .robert__layout {
+        grid-template-columns: 1fr 1fr;
+        gap: 6rem;
+        align-items: start;
+      }
+    }
+    .robert__pullquote {
+      position: relative;
+      padding: 2.5rem;
+      border: 1px solid var(--rule-strong);
+      background: rgba(92,51,32,0.35);
+    }
+    .robert__pullquote::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--coral);
+    }
+    .robert__quote-text {
+      font-family: var(--f-quote);
+      font-style: italic;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      line-height: 1.35;
+      color: var(--cream);
+      margin-bottom: 1.2rem;
+    }
+    .robert__quote-attr {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--coral);
+    }
+    .robert__content {}
+    .robert__mbe {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--coral);
+      border: 1px solid rgba(224,90,69,0.35);
+      padding: 4px 10px;
+      margin-bottom: 1.2rem;
+    }
+
+    /* ─── FOUNDING MEMBER SECTION ────────────────────────────── */
+    .section-founding {
+      background: var(--bg-deep);
+    }
+    .founding__layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+    @media (min-width: 860px) {
+      .founding__layout {
+        grid-template-columns: 5fr 4fr;
+        gap: 6rem;
+        align-items: start;
+      }
+    }
+    .founding__list {
+      list-style: none;
+      margin: 2rem 0 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+    .founding__list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: rgba(245,237,230,0.8);
+      line-height: 1.6;
+    }
+    .founding__list li::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 1px;
+      background: var(--coral);
+      margin-top: 0.65em;
+      flex-shrink: 0;
+    }
+
+    /* ─── WAITLIST FORM ──────────────────────────────────────── */
+    .section-waitlist {
+      background: var(--cream);
+      padding-block: clamp(4rem, 10vw, 8rem);
+    }
+    .section-waitlist .section-eyebrow__line { background: var(--coral); }
+    .section-waitlist .section-eyebrow__text { color: var(--coral); }
+    .section-waitlist .section-header { color: var(--bg-deep); }
+
+    .form-card {
+      background: #fff;
+      padding: clamp(2rem, 5vw, 3.5rem);
+      box-shadow: 0 32px 80px rgba(66,33,11,0.12);
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+    @media (min-width: 600px) {
+      .form-grid { grid-template-columns: 1fr 1fr; }
+      .form-grid .span-2 { grid-column: 1 / -1; }
+    }
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-field label {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--panel);
+    }
+    .form-field label .req { color: var(--coral); margin-left: 2px; }
+    .form-field input,
+    .form-field select {
+      padding: 13px 14px;
+      border: 1px solid rgba(66,33,11,0.18);
+      background: #fdfaf8;
+      color: var(--bg-deep);
+      font-size: 0.95rem;
+      font-weight: 300;
+      border-radius: 2px;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form-field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2342210B' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+    .form-field input:focus,
+    .form-field select:focus {
+      border-color: var(--coral);
+      outline: none;
+    }
+    .form-submit {
+      margin-top: 0.4rem;
+    }
+    .btn-submit {
+      width: 100%;
+      padding: 16px 28px;
+      background: var(--coral);
+      color: #fff;
+      font-family: var(--f-body);
+      font-weight: 500;
+      font-size: 0.88rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-submit:hover { background: #c94e3a; transform: translateY(-1px); }
+    .form-below {
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: rgba(66,33,11,0.5);
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* ─── SHARE / QR SECTION ─────────────────────────────────── */
+    .section-share {
+      background: var(--bg-deep);
+      text-align: center;
+    }
+    .section-share .section-header { color: var(--cream); margin-bottom: 0.8rem; }
+    .qr-wrap {
+      display: inline-block;
+      padding: 16px;
+      background: var(--cream);
+      margin: 2.5rem auto 1.2rem;
+    }
+    .share-url {
+      font-family: var(--f-display);
+      font-weight: 800;
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      letter-spacing: 0.06em;
+      color: var(--coral);
+      margin-bottom: 0.5rem;
+    }
+    .share-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    .footer {
+      background: #120A04;
+      padding-block: 2.5rem;
+      border-top: 1px solid var(--rule);
+    }
+    .footer__inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .footer__brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .footer__wordmark {
+      font-family: var(--f-mark);
+      font-weight: 200;
+      font-size: 0.85rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(245,237,230,0.45);
+    }
+    .footer__copy {
+      font-size: 0.72rem;
+      color: rgba(245,237,230,0.3);
+      letter-spacing: 0.04em;
+      line-height: 1.6;
+    }
+
+    /* ─── DIVIDER ─────────────────────────────────────────────── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    /* ─── FORM SUCCESS STATE ─────────────────────────────────── */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+    .form-success__icon {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--coral);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      margin: 0 auto 1.2rem;
+    }
+    .form-success__title {
+      font-family: var(--f-display);
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--bg-deep);
+      margin-bottom: 0.7rem;
+    }
+    .form-success__body {
+      font-size: 0.95rem;
+      color: rgba(66,33,11,0.65);
+      max-width: 40ch;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ─────────────────────────────────────────────────── -->
+  <nav class="nav" aria-label="Main navigation">
+    <div class="wrap nav__inner">
+      <a href="#" class="nav__brand" aria-label="The Plate home">
+        <svg class="logo-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M72 20A38 38 0 1 0 72 80" stroke="#E05A45" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <circle cx="55" cy="50" r="12" fill="#E05A45"/>
+          <path d="M34 80Q28 88 22 86" stroke="#E05A45" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <line x1="72" y1="20" x2="72" y2="84" stroke="#E05A45" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
+        <span class="nav__wordmark">The Plate</span>
+      </a>
+      <a href="#waitlist" class="nav__cta">Join the waitlist</a>
     </div>
+  </nav>
 
-    <script src="https://unpkg.com/qrcodejs@1.0.0/qrcode.min.js"></script>
-    <script>
-      const revealElements = document.querySelectorAll(".reveal");
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        {
-          threshold: 0.2,
-          rootMargin: "0px 0px -40px 0px"
-        }
-      );
+  <!-- ── HERO ─────────────────────────────────────────────────── -->
+  <section class="hero" aria-labelledby="hero-headline">
+    <div class="wrap hero__inner">
+      <div class="hero__eyebrow" aria-hidden="true">
+        <svg class="logo-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M72 20A38 38 0 1 0 72 80" stroke="#E05A45" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <circle cx="55" cy="50" r="12" fill="#E05A45"/>
+          <path d="M34 80Q28 88 22 86" stroke="#E05A45" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <line x1="72" y1="20" x2="72" y2="84" stroke="#E05A45" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <div class="hero__eyebrow-line"></div>
+          <span class="hero__eyebrow-text">Launching 19 March 2026</span>
+        </div>
+      </div>
 
-      revealElements.forEach((element) => observer.observe(element));
+      <h1 class="hero__headline" id="hero-headline">
+        The head office<br><em>you never had.</em>
+      </h1>
 
-      const targetTime = Date.UTC(2026, 2, 19, 0, 0, 0);
-      const countdownNodes = {
-        days: document.querySelector('[data-unit="days"]'),
-        hours: document.querySelector('[data-unit="hours"]'),
-        minutes: document.querySelector('[data-unit="minutes"]'),
-        seconds: document.querySelector('[data-unit="seconds"]')
-      };
+      <p class="hero__sub">
+        Founded by Robert Walton MBE. Built for independent restaurants — because they deserve better.
+      </p>
 
-      function updateCountdown() {
-        const now = Date.now();
-        const diff = Math.max(0, targetTime - now);
-        const days = Math.floor(diff / 86400000);
-        const hours = Math.floor((diff % 86400000) / 3600000);
-        const minutes = Math.floor((diff % 3600000) / 60000);
-        const seconds = Math.floor((diff % 60000) / 1000);
+      <div class="hero__cta-group">
+        <a href="#waitlist" class="btn-primary">Join the founding member waitlist</a>
+        <span class="hero__note">Free from day one. No platform to learn. No contract.</span>
+      </div>
 
-        countdownNodes.days.textContent = String(days).padStart(2, "0");
-        countdownNodes.hours.textContent = String(hours).padStart(2, "0");
-        countdownNodes.minutes.textContent = String(minutes).padStart(2, "0");
-        countdownNodes.seconds.textContent = String(seconds).padStart(2, "0");
+      <div class="hero__countdown">
+        <p class="hero__countdown-label">Doors open in</p>
+        <div class="countdown-units" aria-live="polite" aria-label="Countdown to launch">
+          <div class="countdown-unit">
+            <span class="countdown-num" id="cd-days">--</span>
+            <span class="countdown-lbl">Days</span>
+          </div>
+          <div class="countdown-unit">
+            <span class="countdown-num" id="cd-hours">--</span>
+            <span class="countdown-lbl">Hours</span>
+          </div>
+          <div class="countdown-unit">
+            <span class="countdown-num" id="cd-mins">--</span>
+            <span class="countdown-lbl">Minutes</span>
+          </div>
+          <div class="countdown-unit">
+            <span class="countdown-num" id="cd-secs">--</span>
+            <span class="countdown-lbl">Seconds</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── THE PROBLEM ───────────────────────────────────────────── -->
+  <section class="section-problem" aria-labelledby="problem-header">
+    <div class="wrap">
+      <div class="section-eyebrow" aria-hidden="true">
+        <div class="section-eyebrow__line"></div>
+        <span class="section-eyebrow__text">The reality</span>
+      </div>
+
+      <div class="problem__layout">
+        <div>
+          <h2 class="section-header" id="problem-header">
+            Running an independent restaurant is as complex as running a chain.<br>You have never had the support to match.
+          </h2>
+          <p class="body-text">
+            Chains have always had an advantage that has nothing to do with the quality of their food or the talent of their operators. They have a head office. An ops team. Specialists on energy, staffing, compliance, cost control. People whose job it is to watch the numbers, catch the problems, and tell them what to do next.
+          </p>
+          <p class="body-text" style="margin-top:1.2em">
+            Independent operators have always had to be all of those people at once. This is not a problem of operators making bad decisions. It is a problem of operators making hard decisions without adequate support — in conditions that have become almost impossibly difficult.
+          </p>
+        </div>
+
+        <div class="stats-stack" aria-label="Industry statistics">
+          <div class="stat-item">
+            <div class="stat-num">6</div>
+            <div class="stat-label">Independent restaurants closing every single day</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">2,000<span style="font-size:0.55em;vertical-align:super">+</span></div>
+            <div class="stat-label">Independent venues projected to close in 2026</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">300<span style="font-size:0.55em;vertical-align:super">%</span></div>
+            <div class="stat-label">Energy costs up since 2019 — the largest cost shock in a generation</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">15<span style="font-size:0.55em;vertical-align:super">%+</span></div>
+            <div class="stat-label">Rise in the National Living Wage — hitting the sector's largest cost line hardest</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── THE SOLUTION ──────────────────────────────────────────── -->
+  <section class="section-solution" aria-labelledby="solution-header">
+    <div class="wrap">
+      <div class="section-eyebrow" aria-hidden="true">
+        <div class="section-eyebrow__line"></div>
+        <span class="section-eyebrow__text">What we built</span>
+      </div>
+
+      <h2 class="section-header solution__header" id="solution-header">
+        The Plate gives independent restaurants the intelligence, support and guidance that only large groups have ever had.
+      </h2>
+      <div class="solution__body">
+        <p class="body-text">
+          Not a tool that sits alongside your business. The head office you never had. A business coach that knows your numbers. Energy buying power at rates chains get, with someone watching every bill. Staffing that finds the right people and makes them affordable. Everything sequenced so that from day one, you have something genuinely useful — and everything that follows builds on it.
+        </p>
+      </div>
+
+      <div class="phases" aria-label="Product phases">
+        <div class="phase">
+          <div class="phase__num-wrap">
+            <div class="phase__dot"></div>
+            <div class="phase__num">01</div>
+          </div>
+          <div class="phase__content">
+            <div class="phase__timing">Today</div>
+            <h3 class="phase__title">The ops team in your pocket.</h3>
+            <p class="phase__body">
+              A business coach that knows your industry, available on WhatsApp, from day one. Send a photo of your menu and find out exactly where your margin is going. Upload a supplier invoice and find out if you are being overcharged. Ask anything — licensing, pricing, staffing, compliance. Get back analysis and recommendations that would cost hundreds from a consultant, in plain English, in minutes. No new platform to learn. No integrations. No onboarding. Just WhatsApp.
+            </p>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div class="phase__num-wrap">
+            <div class="phase__dot" style="background:rgba(224,90,69,0.55); box-shadow:none;"></div>
+            <div class="phase__num">02</div>
+          </div>
+          <div class="phase__content">
+            <div class="phase__timing">Next</div>
+            <h3 class="phase__title">A service that gets to know your business.</h3>
+            <p class="phase__body">
+              The more you use it, the more it works for you. Until it starts telling you things you did not know to ask — flagging compliance deadlines, cost anomalies, and opportunities specific to your venue before they become problems.
+            </p>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div class="phase__num-wrap">
+            <div class="phase__dot" style="background:rgba(224,90,69,0.3); box-shadow:none;"></div>
+            <div class="phase__num">03</div>
+          </div>
+          <div class="phase__content">
+            <div class="phase__timing">Later</div>
+            <h3 class="phase__title">The complete head office.</h3>
+            <p class="phase__body">
+              Energy buying power through partnerships that buy at rates the open market cannot match, with forensic monitoring of every bill. Culture-matched staffing that finds people who will still be with you next winter, with wage subsidy support that most operators have never even heard of. And an orchestration layer that synthesises it all and tells you exactly what to do next.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ROBERT ─────────────────────────────────────────────────── -->
+  <section class="section-robert" aria-labelledby="robert-header">
+    <div class="wrap">
+      <div class="section-eyebrow" aria-hidden="true">
+        <div class="section-eyebrow__line"></div>
+        <span class="section-eyebrow__text">The founder</span>
+      </div>
+
+      <div class="robert__layout">
+        <div class="robert__content">
+          <span class="robert__mbe">Robert Walton MBE</span>
+          <h2 class="section-header" id="robert-header" style="max-width:20ch;">
+            Founded by someone who has felt the gap himself.
+          </h2>
+          <p class="body-text">
+            Robert Walton MBE has spent thirty years in independent hospitality. He has opened restaurants, run venues, supported operators, and watched what happens to good businesses when the structural support simply is not there.
+          </p>
+          <p class="body-text" style="margin-top:1.2em;">
+            He is also a client of Utilities Intelligence — one of The Plate's founding partners. Through that relationship, £68,000 in wrongly billed energy fees were written off for his business. Not a projected saving. Not a best-case scenario. What actually happened, to the platform's own founder, because someone was watching the bills.
+          </p>
+          <p class="body-text" style="margin-top:1.2em; font-weight:400; color:var(--cream);">
+            Robert Walton MBE is not a figurehead. He is the reason The Plate exists.
+          </p>
+        </div>
+
+        <div>
+          <div class="robert__pullquote">
+            <p class="robert__quote-text">
+              "£68,000 in wrongly billed energy fees — written off. Not projected. What actually happened."
+            </p>
+            <p class="robert__quote-attr">Robert Walton MBE — Founder, The Plate</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOUNDING MEMBER ────────────────────────────────────────── -->
+  <section class="section-founding" aria-labelledby="founding-header">
+    <div class="wrap">
+      <div class="section-eyebrow" aria-hidden="true">
+        <div class="section-eyebrow__line"></div>
+        <span class="section-eyebrow__text">Founding membership</span>
+      </div>
+
+      <div class="founding__layout">
+        <div>
+          <h2 class="section-header" id="founding-header" style="max-width:22ch;">
+            Founding membership is not a discount. It is a different kind of access.
+          </h2>
+          <p class="body-text">
+            The Plate launches to the wider market in Summer 2026. The people who join the founding member waitlist now get in first — and what that means is specific.
+          </p>
+          <ul class="founding__list">
+            <li>Free access to Phase 1 from day one — no cost, no commitment</li>
+            <li>The business coach, on WhatsApp, available immediately on launch</li>
+            <li>The opportunity to shape what The Plate becomes as it learns your business</li>
+            <li>Founding member status that closes permanently when we open to the wider market</li>
+          </ul>
+          <p class="body-text">
+            There is nothing to pay to start. There is no onboarding process. There is no new platform to learn. There is just a waitlist that closes, and operators who are in it, and operators who are not.
+          </p>
+        </div>
+
+        <div style="padding-top: clamp(0rem, 5vw, 2rem);">
+          <div style="padding:2.5rem; background:rgba(92,51,32,0.35); border:1px solid var(--rule-strong);">
+            <p style="font-family:var(--f-display); font-weight:800; font-size:clamp(1.6rem,3.5vw,2.4rem); line-height:1.1; letter-spacing:-0.02em; color:var(--cream); margin-bottom:1.5rem;">
+              Someone in your corner.<br>From day one.
+            </p>
+            <p style="font-size:0.88rem; font-weight:300; color:var(--muted); line-height:1.7; margin-bottom:2rem;">
+              Independent operators have always had to make hard decisions alone. At midnight, between services, without the data or the support that would make them easier. The Plate is built to change that.
+            </p>
+            <a href="#waitlist" class="btn-primary" style="display:block; text-align:center;">Join the founding member waitlist</a>
+            <p style="margin-top:0.9rem; font-size:0.72rem; color:var(--muted); text-align:center; letter-spacing:0.04em;">
+              Free. No contract. Closes when The Plate opens to the wider market.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WAITLIST FORM ──────────────────────────────────────────── -->
+  <section class="section-waitlist" id="waitlist" aria-labelledby="waitlist-header">
+    <div class="wrap">
+      <div class="section-eyebrow" aria-hidden="true">
+        <div class="section-eyebrow__line"></div>
+        <span class="section-eyebrow__text">Secure your place</span>
+      </div>
+
+      <h2 class="section-header" id="waitlist-header" style="color:var(--bg-deep); max-width:22ch; margin-bottom:2.5rem;">
+        Join the founding member waitlist.
+      </h2>
+
+      <div class="form-card">
+        <form id="waitlist-form" action="https://formspree.io/f/placeholder" method="POST">
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="f-fname">First name <span class="req">*</span></label>
+              <input type="text" id="f-fname" name="first_name" required autocomplete="given-name" placeholder="Sarah" />
+            </div>
+            <div class="form-field">
+              <label for="f-lname">Last name <span class="req">*</span></label>
+              <input type="text" id="f-lname" name="last_name" required autocomplete="family-name" placeholder="Clarke" />
+            </div>
+            <div class="form-field span-2">
+              <label for="f-email">Email address <span class="req">*</span></label>
+              <input type="email" id="f-email" name="email" required autocomplete="email" placeholder="sarah@yourrestaurant.co.uk" />
+            </div>
+            <div class="form-field span-2">
+              <label for="f-restaurant">Restaurant name <span class="req">*</span></label>
+              <input type="text" id="f-restaurant" name="restaurant_name" required placeholder="The White Hart" />
+            </div>
+            <div class="form-field">
+              <label for="f-locations">Number of locations <span class="req">*</span></label>
+              <select id="f-locations" name="locations" required>
+                <option value="" disabled selected>Select…</option>
+                <option value="1">1</option>
+                <option value="2-3">2–3</option>
+                <option value="4-10">4–10</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="f-source">How did you hear about us?</label>
+              <select id="f-source" name="source">
+                <option value="" selected>Select… (optional)</option>
+                <option value="robert-19th">Robert's address on 19th March</option>
+                <option value="robert-social">Robert's social media</option>
+                <option value="colleague">A colleague or contact</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-field span-2 form-submit">
+              <button type="submit" class="btn-submit">Secure my founding member place</button>
+            </div>
+          </div>
+        </form>
+        <div class="form-success" id="form-success">
+          <div class="form-success__icon">&#10003;</div>
+          <p class="form-success__title">You're on the list.</p>
+          <p class="form-success__body">We'll be in touch as soon as The Plate opens. Thank you for being part of this from the start.</p>
+        </div>
+        <p class="form-below">By joining the waitlist you will receive free access to Phase 1 of The Plate from launch and occasional updates about what's coming. No spam. Unsubscribe any time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SHARE ──────────────────────────────────────────────────── -->
+  <section class="section-share" aria-label="Share The Plate">
+    <div class="wrap">
+      <div class="section-eyebrow" style="justify-content:center;" aria-hidden="true">
+        <div class="section-eyebrow__line"></div>
+        <span class="section-eyebrow__text">Know an operator who needs this?</span>
+        <div class="section-eyebrow__line"></div>
+      </div>
+      <h2 class="section-header" style="color:var(--cream); margin-bottom:0.5rem;">Share The Plate.</h2>
+      <p style="color:var(--muted); font-size:0.9rem; max-width:42ch; margin:0 auto;">
+        Every independent restaurant in the UK deserves to know this exists.
+      </p>
+      <div class="qr-wrap" aria-label="QR code for theplate.co.uk">
+        <div id="qrcode"></div>
+      </div>
+      <p class="share-url">theplate.co.uk</p>
+      <p class="share-sub">Scan to open the founding member waitlist</p>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <div class="footer__brand">
+        <svg class="logo-svg--sm" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M72 20A38 38 0 1 0 72 80" stroke="#E05A45" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <circle cx="55" cy="50" r="12" fill="#E05A45"/>
+          <path d="M34 80Q28 88 22 86" stroke="#E05A45" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <line x1="72" y1="20" x2="72" y2="84" stroke="#E05A45" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
+        <span class="footer__wordmark">The Plate</span>
+      </div>
+      <p class="footer__copy">
+        Founded by Robert Walton MBE &nbsp;·&nbsp; theplate.co.uk &nbsp;·&nbsp; The waitlist closes when we open to the wider market.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ── SCRIPTS ─────────────────────────────────────────────────── -->
+  <script src="https://unpkg.com/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script>
+    // ── QR CODE
+    (function() {
+      var el = document.getElementById('qrcode');
+      if (el && window.QRCode) {
+        new QRCode(el, {
+          text: 'https://theplate.co.uk',
+          width: 160,
+          height: 160,
+          colorDark: '#1c0f07',
+          colorLight: '#f5ede6',
+          correctLevel: QRCode.CorrectLevel.H
+        });
       }
+    })();
 
-      updateCountdown();
-      window.setInterval(updateCountdown, 1000);
+    // ── COUNTDOWN
+    (function() {
+      var target = new Date('2026-03-19T10:00:00+00:00').getTime();
+      function pad(n) { return String(n).padStart(2, '0'); }
+      function tick() {
+        var now = Date.now();
+        var diff = target - now;
+        if (diff <= 0) {
+          document.getElementById('cd-days').textContent  = '00';
+          document.getElementById('cd-hours').textContent = '00';
+          document.getElementById('cd-mins').textContent  = '00';
+          document.getElementById('cd-secs').textContent  = '00';
+          return;
+        }
+        var days  = Math.floor(diff / 86400000);
+        var hours = Math.floor((diff % 86400000) / 3600000);
+        var mins  = Math.floor((diff % 3600000) / 60000);
+        var secs  = Math.floor((diff % 60000) / 1000);
+        document.getElementById('cd-days').textContent  = pad(days);
+        document.getElementById('cd-hours').textContent = pad(hours);
+        document.getElementById('cd-mins').textContent  = pad(mins);
+        document.getElementById('cd-secs').textContent  = pad(secs);
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
 
-      new QRCode(document.getElementById("qrcode"), {
-        text: "https://theplate.co.uk",
-        width: 176,
-        height: 176,
-        colorDark: "#1c0f07",
-        colorLight: "#f5ede6",
-        correctLevel: QRCode.CorrectLevel.M
+    // ── FORM SUBMISSION (Formspree AJAX)
+    (function() {
+      var form = document.getElementById('waitlist-form');
+      var success = document.getElementById('form-success');
+      if (!form) return;
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = form.querySelector('.btn-submit');
+        btn.textContent = 'Sending…';
+        btn.disabled = true;
+        var data = new FormData(form);
+        fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        }).then(function(r) {
+          if (r.ok) {
+            form.style.display = 'none';
+            success.style.display = 'block';
+          } else {
+            btn.textContent = 'Secure my founding member place';
+            btn.disabled = false;
+            alert('Something went wrong. Please try again or email us directly.');
+          }
+        }).catch(function() {
+          btn.textContent = 'Secure my founding member place';
+          btn.disabled = false;
+          alert('Something went wrong. Please check your connection and try again.');
+        });
       });
-    </script>
-  </body>
+    })();
+  </script>
+
+</body>
 </html>
