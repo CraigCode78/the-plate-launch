@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Plate | Launching 19 March 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #1C0F0A;
+      --headline: #E8A598;
+      --body: #F5EDE6;
+      --gold: #C9A96E;
+      --burnt: #8B3A2A;
+      --panel: #26140e;
+      --muted: #d8cbc1;
+      --max: 680px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at 50% -10%, #2a1711 0%, var(--bg) 48%, #160b07 100%);
+      color: var(--body);
+      font-family: "DM Sans", sans-serif;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 220ms ease;
+    }
+
+    a:hover,
+    a:focus-visible {
+      border-color: var(--gold);
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 3rem));
+      margin: 0 auto;
+    }
+
+    section {
+      position: relative;
+      padding: clamp(5rem, 10vw, 8rem) 0;
+    }
+
+    .fade {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 700ms ease, transform 700ms ease;
+      will-change: opacity, transform;
+    }
+
+    .fade.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .headline {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--headline);
+      line-height: 1.13;
+      letter-spacing: 0.01em;
+    }
+
+    .label {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 300;
+      color: var(--gold);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .logo-mark {
+      width: min(250px, 62vw);
+      height: auto;
+      color: var(--headline);
+      margin-bottom: 1.4rem;
+    }
+
+    .hero .wordmark {
+      font-size: clamp(2.5rem, 8vw, 3.25rem);
+      margin-bottom: 1rem;
+    }
+
+    .tagline {
+      margin: 0;
+      font-size: clamp(1rem, 2.6vw, 1.125rem);
+      color: var(--body);
+      letter-spacing: 0.12em;
+      font-weight: 300;
+    }
+
+    .tagline-line {
+      margin: 1.35rem auto 0;
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--gold) 20%, var(--gold) 80%, transparent 100%);
+      opacity: 0;
+      animation: lineIn 2.2s ease 0.6s forwards;
+    }
+
+    @keyframes lineIn {
+      0% {
+        transform: scaleX(0.2);
+        opacity: 0;
+      }
+      100% {
+        transform: scaleX(1);
+        opacity: 1;
+      }
+    }
+
+    .scroll-caret {
+      position: absolute;
+      bottom: 2.1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 18px;
+      height: 18px;
+      border-right: 1px solid var(--muted);
+      border-bottom: 1px solid var(--muted);
+      transform-origin: center;
+      rotate: 45deg;
+      animation: pulse 2s ease-in-out infinite;
+      opacity: 0.68;
+    }
+
+    @keyframes pulse {
+      0%,
+      100% {
+        opacity: 0.35;
+        translate: 0 0;
+      }
+      50% {
+        opacity: 0.95;
+        translate: 0 6px;
+      }
+    }
+
+    .teaser {
+      text-align: center;
+      padding-top: clamp(4.2rem, 8vw, 6.2rem);
+    }
+
+    .teaser .headline {
+      font-size: clamp(2rem, 7vw, 3.2rem);
+      margin-bottom: 1.2rem;
+    }
+
+    .teaser p {
+      margin: 0;
+      color: var(--body);
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      font-size: 1rem;
+    }
+
+    .pitch {
+      text-align: left;
+    }
+
+    .pitch .line {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--headline);
+      font-size: clamp(1.8rem, 6.7vw, 3rem);
+      line-height: 1.17;
+    }
+
+    .pitch .line + .line {
+      margin-top: 0.5rem;
+    }
+
+    .pitch .support {
+      margin-top: 2rem;
+      font-size: 1rem;
+      letter-spacing: 0.03em;
+      color: var(--body);
+      max-width: 56ch;
+    }
+
+    .pitch-rule {
+      margin-top: 3rem;
+      border: 0;
+      border-top: 1px solid color-mix(in srgb, var(--gold), transparent 15%);
+    }
+
+    .signup {
+      text-align: center;
+    }
+
+    .signup .headline {
+      font-size: clamp(2rem, 6.8vw, 2.375rem);
+      margin-bottom: 2rem;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(0.6rem, 2vw, 1rem);
+      align-items: start;
+      margin-bottom: 2.1rem;
+    }
+
+    .count-item {
+      text-align: center;
+    }
+
+    .count-value {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: clamp(2.4rem, 9vw, 3.75rem);
+      color: var(--headline);
+      line-height: 0.95;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .count-label {
+      margin-top: 0.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 300;
+    }
+
+    .signup-form {
+      max-width: 520px;
+      margin: 0 auto;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .email-input {
+      width: 100%;
+      border: 0;
+      border-bottom: 1px solid color-mix(in srgb, var(--body), transparent 62%);
+      background: transparent;
+      color: var(--body);
+      font-family: "DM Sans", sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      padding: 0.9rem 0.15rem;
+      outline: none;
+      transition: border-color 180ms ease;
+    }
+
+    .email-input::placeholder {
+      color: color-mix(in srgb, var(--body), transparent 38%);
+      font-weight: 300;
+    }
+
+    .email-input:focus {
+      border-bottom-color: var(--gold);
+    }
+
+    .submit-btn {
+      width: fit-content;
+      justify-self: center;
+      border: 0;
+      border-radius: 0;
+      background: var(--gold);
+      color: #1a120d;
+      font-family: "DM Sans", sans-serif;
+      font-weight: 400;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-transform: none;
+      padding: 0.85rem 1.35rem;
+      cursor: pointer;
+      transition: background-color 180ms ease;
+    }
+
+    .submit-btn:hover,
+    .submit-btn:focus-visible {
+      background: color-mix(in srgb, var(--gold), var(--burnt) 20%);
+    }
+
+    .fine {
+      margin-top: 0.65rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.09em;
+      color: color-mix(in srgb, var(--body), transparent 24%);
+      text-transform: none;
+    }
+
+    .qr-section {
+      text-align: center;
+      padding-bottom: clamp(5.5rem, 11vw, 8.5rem);
+    }
+
+    .qr-panel {
+      margin: 1.3rem auto 1.1rem;
+      width: fit-content;
+      background: var(--panel);
+      padding: 1.2rem;
+      border: 1px solid color-mix(in srgb, var(--body), transparent 20%);
+    }
+
+    #qrcode {
+      width: 200px;
+      height: 200px;
+      line-height: 0;
+    }
+
+    .domain {
+      margin: 0.35rem 0 0;
+      font-weight: 300;
+      color: var(--body);
+      letter-spacing: 0.08em;
+      font-size: 1rem;
+    }
+
+    .tiny {
+      margin-top: 0.55rem;
+      font-size: 0.78rem;
+      color: color-mix(in srgb, var(--body), transparent 28%);
+      letter-spacing: 0.07em;
+      max-width: 46ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    footer {
+      border-top: 1px solid color-mix(in srgb, var(--gold), transparent 8%);
+      background: var(--bg);
+    }
+
+    .footer-inner {
+      width: min(1060px, calc(100% - 3rem));
+      margin: 0 auto;
+      padding: 1.1rem 0 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      min-width: 0;
+    }
+
+    .footer-mark {
+      width: 40px;
+      color: var(--headline);
+      flex: 0 0 auto;
+    }
+
+    .footer-word {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-size: 1.35rem;
+      color: var(--headline);
+      white-space: nowrap;
+    }
+
+    .copyright {
+      margin: 0;
+      color: color-mix(in srgb, var(--body), transparent 35%);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 300;
+    }
+
+    @media (max-width: 660px) {
+      section {
+        padding: 4.6rem 0;
+      }
+
+      .container {
+        width: min(var(--max), calc(100% - 2.2rem));
+      }
+
+      .countdown {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem 0.8rem;
+      }
+
+      .footer-inner {
+        width: calc(100% - 2.2rem);
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      .fade {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="container fade">
+        <svg class="logo-mark" viewBox="0 0 260 260" aria-hidden="true" role="img">
+          <g fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M 72 54 A 100 100 0 1 1 72 206" />
+            <path d="M 108 196 V 64" />
+            <path d="M 108 70 H 162 A 42 42 0 0 1 162 154 H 108" />
+          </g>
+        </svg>
+        <h1 class="headline wordmark">The Plate</h1>
+        <p class="tagline">The head office you never had.</p>
+        <div class="tagline-line" aria-hidden="true"></div>
+      </div>
+      <a class="scroll-caret" href="#teaser" aria-label="Scroll to next section"></a>
+    </section>
+
+    <section id="teaser" class="teaser fade">
+      <div class="container">
+        <h2 class="headline">Something is coming.</h2>
+        <p>19 March 2026. London.</p>
+      </div>
+    </section>
+
+    <section class="pitch fade">
+      <div class="container">
+        <p class="line">Independent restaurants.</p>
+        <p class="line">The intelligence they deserve.</p>
+        <p class="line">The head office they never had.</p>
+        <p class="support">Founded by Robert Walton MBE. Built for the operators who built their own way.</p>
+        <hr class="pitch-rule" />
+      </div>
+    </section>
+
+    <section class="signup fade">
+      <div class="container">
+        <h2 class="headline">Join the founding members.</h2>
+        <div class="countdown" aria-live="polite" aria-label="Countdown to launch">
+          <div class="count-item">
+            <p class="count-value" id="days">00</p>
+            <div class="count-label">Days</div>
+          </div>
+          <div class="count-item">
+            <p class="count-value" id="hours">00</p>
+            <div class="count-label">Hours</div>
+          </div>
+          <div class="count-item">
+            <p class="count-value" id="minutes">00</p>
+            <div class="count-label">Minutes</div>
+          </div>
+          <div class="count-item">
+            <p class="count-value" id="seconds">00</p>
+            <div class="count-label">Seconds</div>
+          </div>
+        </div>
+
+        <form class="signup-form" action="#" method="post" novalidate>
+          <label for="email" class="label" style="display:none;">Email address</label>
+          <input id="email" class="email-input" type="email" name="email" placeholder="Your email address" autocomplete="email" required />
+          <button class="submit-btn" type="submit">Secure my founding place</button>
+        </form>
+        <p class="fine">Free to join. Closes at launch.</p>
+      </div>
+    </section>
+
+    <section class="qr-section fade">
+      <div class="container">
+        <p class="label">Share the invitation</p>
+        <div class="qr-panel">
+          <div id="qrcode" aria-label="QR code to theplate.co.uk"></div>
+        </div>
+        <p class="domain">theplate.co.uk</p>
+        <p class="tiny">Scan to join. Or share with someone who should be in the room.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <svg class="footer-mark" viewBox="0 0 260 260" aria-hidden="true" role="img">
+          <g fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M 72 54 A 100 100 0 1 1 72 206" />
+            <path d="M 108 196 V 64" />
+            <path d="M 108 70 H 162 A 42 42 0 0 1 162 154 H 108" />
+          </g>
+        </svg>
+        <p class="footer-word">The Plate</p>
+      </div>
+      <p class="copyright">&copy; 2026 The Plate</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/qrcode/build/qrcode.min.js"></script>
+  <script>
+    (function () {
+      const launchTime = Date.parse("2026-03-19T00:00:00Z");
+      const daysEl = document.getElementById("days");
+      const hoursEl = document.getElementById("hours");
+      const minutesEl = document.getElementById("minutes");
+      const secondsEl = document.getElementById("seconds");
+
+      function format(value) {
+        return String(value).padStart(2, "0");
+      }
+
+      function updateCountdown() {
+        const now = Date.now();
+        const diff = Math.max(0, launchTime - now);
+
+        const days = Math.floor(diff / 86400000);
+        const hours = Math.floor((diff % 86400000) / 3600000);
+        const minutes = Math.floor((diff % 3600000) / 60000);
+        const seconds = Math.floor((diff % 60000) / 1000);
+
+        daysEl.textContent = format(days);
+        hoursEl.textContent = format(hours);
+        minutesEl.textContent = format(minutes);
+        secondsEl.textContent = format(seconds);
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      const qrTarget = document.getElementById("qrcode");
+      if (window.QRCode && qrTarget) {
+        window.QRCode.toCanvas(
+          qrTarget,
+          "https://theplate.co.uk",
+          {
+            width: 200,
+            margin: 0,
+            color: {
+              dark: "#F5EDE6",
+              light: "#26140e"
+            }
+          }
+        );
+      }
+
+      const fades = document.querySelectorAll(".fade");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          root: null,
+          threshold: 0.18,
+          rootMargin: "0px 0px -40px 0px"
+        }
+      );
+
+      fades.forEach((el) => observer.observe(el));
+
+      const form = document.querySelector(".signup-form");
+      if (form) {
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
